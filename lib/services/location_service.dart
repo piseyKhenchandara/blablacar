@@ -7,6 +7,12 @@ import '../model/ride/locations.dart';
 ///   - The list of available rides
 ///
 class LocationsService {
-  static const List<Location> availableLocations =
-      fakeLocations; // TODO for now fake data
+  static const List<Location> availableLocations = [
+    Location(name: "Paris", country: Country.france),
+    Location(name: 'Lyon', country: Country.france),
+    Location(name: 'London', country: Country.uk),
+    Location(name: 'Manchester', country: Country.uk),
+    Location(name: 'Madrid', country: Country.spain),
+    Location(name: 'Barcelona', country: Country.spain),
+  ];
 }
