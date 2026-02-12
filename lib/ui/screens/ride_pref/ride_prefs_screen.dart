@@ -16,7 +16,8 @@ const String blablaHomeImagePath = 'assets/images/blabla_home.png';
 class RidePrefsScreen extends StatelessWidget {
   const RidePrefsScreen({super.key});
 
-  void onRidePrefSelected(RidePref ridePref) {
+  void onRidePrefSelected(RidePref selectedRidePref) {
+    
     // TODO
   }
 

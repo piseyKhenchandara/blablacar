@@ -10,4 +10,6 @@ class RidePrefsService {
   static RidePref? selectedRidePref; // The current selected ride preference
 
   static List<RidePref> ridePrefsHistory = fakeRidePrefs;
+
+ 
 }

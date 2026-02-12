@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import '../../../../model/ride/locations.dart';
 import '../../../../model/ride_pref/ride_pref.dart';
 
-
 class RidePrefForm extends StatefulWidget {
   // The form can be created with an optional initial RidePref.
   final RidePref? initRidePref;
@@ -32,7 +31,6 @@ class _RidePrefFormState extends State<RidePrefForm> {
   @override
   void initState() {
     super.initState();
-    
   }
 
   // ----------------------------------
@@ -40,22 +38,20 @@ class _RidePrefFormState extends State<RidePrefForm> {
   // ----------------------------------
   void onSearched() {}
 
-    
-  void onSelectDeparture() async {
+  Future<void> onSelectDeparture() async {
     final selectedLocation = await Navigator.push<Location>(
-      context, MaterialPageRoute(
-        builder: (context) => LocationPickerScreen(),
-      )
+      context,
+      MaterialPageRoute(builder: (context) => LocationPickerScreen()),
     );
 
-    if(selectedLocation != null) {
+    if (selectedLocation != null) {
       setState(() {
         departure = selectedLocation;
       });
     }
   }
 
-   void onSelectArrival() async {
+  void onSelectArrival() async {
     final selectedLocation = await Navigator.push<Location>(
       context,
       MaterialPageRoute(builder: (context) => LocationPickerScreen()),
@@ -71,7 +67,6 @@ class _RidePrefFormState extends State<RidePrefForm> {
   void pickDate() {}
 
   void pickSeats() {}
-
 
   @override
   Widget build(BuildContext context) {
@@ -152,10 +147,8 @@ class FormTile<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: IconButton(
-        onPressed: onPressed,
-        icon: Icon(icon, color: BlaColors.iconLight),
-      ),
+      onTap: onPressed,
+      leading: Icon(icon, color: BlaColors.iconLight),
       title: Text(displayText, style: textStyle),
     );
   }
