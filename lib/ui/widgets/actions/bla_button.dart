@@ -1,46 +1,49 @@
 import 'package:blabla/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-enum ColorButton { primary, secondary }
-
 class BlaButton extends StatelessWidget {
-  final ColorButton color;
-  final VoidCallback onTap;
+  final VoidCallback onPressed;
+  final String buttonText;
+  final bool isPrimaryColor;
   final IconData? icon;
-  final String title;
+
   const BlaButton({
     super.key,
-    required this.color,
-    required this.onTap,
-    required this.title,
+    required this.onPressed,
+    required this.buttonText,
+    this.isPrimaryColor = true,
     this.icon,
   });
 
   Color get backgroundColor =>
-      color == ColorButton.primary ? BlaColors.primary : BlaColors.white;
-  Color get textColor =>
-      color == ColorButton.primary ? BlaColors.white : BlaColors.primary;
+      isPrimaryColor ? BlaColors.primary : BlaColors.white;
+  Color get textColor => isPrimaryColor ? BlaColors.white : BlaColors.primary;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        margin: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        width: double.infinity,
-        height: 100,
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Icon(icon),
-              Text(title, style: TextStyle(fontSize: 24, color: textColor)),
-            ],
+    return SizedBox(
+      width: double.infinity,
+      height: 48,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor,
+          foregroundColor: textColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
           ),
+          elevation: 0,
+        ),
+        onPressed: onPressed,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (icon != null) ...[
+              Icon(icon, color: textColor),
+              SizedBox(width: 8),
+            ],
+            Text(buttonText, style: TextStyle(fontSize: 18, color: textColor)),
+          ],
         ),
       ),
     );
