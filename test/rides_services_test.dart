@@ -27,22 +27,20 @@ void main() {
       MaterialApp(
         home: Scaffold(
           body: BlaButton(
-            color: ColorButton.primary,
-            icon: Icons.history,
-            title: 'Test',
-            onTap: () {
+            onPressed: () {
               tapped = true;
             },
+            buttonText: 'Test',
+            isPrimaryColor: true,
+            icon: Icons.history,
           ),
         ),
       ),
     );
 
-   
     await tester.tap(find.text('Test'));
     await tester.pump();
 
- 
     expect(tapped, true);
   });
 
